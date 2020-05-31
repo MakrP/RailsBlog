@@ -1,0 +1,32 @@
+<h1 align="center">Listing all articles</h1>
+<div class="conteiner-fluid">
+  <div class= "row">
+  <div class="col-md-10">
+    <div class="row">
+  <%= render 'shared/article', obj: @articles %>
+  </div>
+  </div>
+    <div class="col-md-2">
+      <div class="card mt-3">
+        <div class="card-header">
+          Categories
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+  <% Category.all.each do |category| %>
+     <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%= link_to category.category, articles_path(:cate => category.id) %>
+       <span class="badge badge-primary badge-pill"><%= category.articles.count %></span>
+     </li>
+    <% end %>
+          </ul>
+    </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<!--<div align="center">-->
+  <%#= will_paginate %>
+<!--</div>-->
